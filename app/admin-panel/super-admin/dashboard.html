@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Installatie - Super Admin Dashboard</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="admin-layout">
+        <header class="main-header">
+            <div class="logo-section">
+                <img src="../logo.png" alt="VIP Installatie" class="header-logo">
+                <h1>Super Admin Dashboard</h1>
+            </div>
+            <div class="header-actions">
+                <button class="btn-primary" onclick="showNewDistributionModal()">
+                    <i class="icon-plus"></i> Nieuwe Distributie
+                </button>
+                <span class="user-info">Welkom, Super Admin</span>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+            <!-- Omzet Overzicht -->
+            <div class="dashboard-section">
+                <h2>Omzet Overzicht</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Totale Omzet</h3>
+                        <div class="stat-value">€ <span id="totalRevenue">0.00</span></div>
+                        <div class="stat-trend positive">+12.5% ↑</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Openstaande Facturen</h3>
+                        <div class="stat-value">€ <span id="pendingInvoices">0.00</span></div>
+                        <div class="stat-count">12 facturen</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Beltegoed Balans</h3>
+                        <div class="stat-value">€ <span id="creditBalance">0.00</span></div>
+                        <div class="stat-trend negative">-3.2% ↓</div>
+                    </div>
+                </div>
+                
+                <!-- Omzet Grafiek -->
+                <div class="chart-container">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Verbruik per Distributie -->
+            <div class="dashboard-section">
+                <h2>Verbruik per Distributie</h2>
+                <div class="usage-grid">
+                    <div class="usage-chart">
+                        <canvas id="callUsageChart"></canvas>
+                    </div>
+                    <div class="usage-chart">
+                        <canvas id="smsUsageChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Facturatie Status -->
+            <div class="dashboard-section">
+                <h2>Facturatie Status</h2>
+                <div class="invoice-status-grid">
+                    <div class="status-chart">
+                        <canvas id="invoiceStatusChart"></canvas>
+                    </div>
+                    <div class="status-list">
+                        <div class="status-item">
+                            <span class="status-label">Betaald</span>
+                            <span class="status-value">€ 12,450.00</span>
+                            <div class="status-bar">
+                                <div class="status-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Openstaand</span>
+                            <span class="status-value">€ 3,280.00</span>
+                            <div class="status-bar">
+                                <div class="status-progress" style="width: 20%;"></div>
+                            </div>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Verlopen</span>
+                            <span class="status-value">€ 850.00</span>
+                            <div class="status-bar">
+                                <div class="status-progress warning" style="width: 5%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Distributies -->
+            <div class="dashboard-section">
+                <h2>Top Distributies</h2>
+                <div class="distribution-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Distributie</th>
+                                <th>Gebruikers</th>
+                                <th>Omzet</th>
+                                <th>Verbruik</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topDistributions">
+                            <!-- Wordt dynamisch gevuld -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script src="charts.js"></script>
+</body>
+</html>

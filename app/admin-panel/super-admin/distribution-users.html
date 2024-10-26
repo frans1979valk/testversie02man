@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distributie Gebruikers Beheer</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="distribution-users.css" rel="stylesheet">
+</head>
+<body>
+    <div class="users-container">
+        <header class="users-header">
+            <h2>Gebruikers voor: <span id="currentDistribution">VIP Installatie</span></h2>
+            <button class="btn-primary" onclick="showNewUserModal()">
+                <i class="icon-plus"></i> Nieuwe Gebruiker
+            </button>
+        </header>
+
+        <div class="user-cards" id="userCards">
+            <!-- Gebruikerskaarten worden hier dynamisch toegevoegd -->
+        </div>
+    </div>
+
+    <!-- Nieuwe Gebruiker Modal -->
+    <div id="newUserModal" class="modal">
+        <div class="modal-content">
+            <h2>Nieuwe Gebruiker Toevoegen</h2>
+            <form id="newUserForm">
+                <div class="form-group">
+                    <label>Naam:</label>
+                    <input type="text" id="userName" required class="input-styled">
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" id="userEmail" required class="input-styled">
+                </div>
+                <div class="form-group">
+                    <label>Telefoonnummer:</label>
+                    <input type="tel" id="userPhone" required class="input-styled">
+                </div>
+                <div class="form-group">
+                    <label>VIP Niveau:</label>
+                    <select id="userLevel" class="input-styled">
+                        <option value="vip1">VIP Niveau 1</option>
+                        <option value="vip2">VIP Niveau 2</option>
+                        <option value="vip3">VIP Niveau 3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Limieten:</label>
+                    <div class="limits-grid">
+                        <div>
+                            <label>Bellen per dag:</label>
+                            <input type="number" id="callLimit" min="0" value="25" class="input-styled">
+                        </div>
+                        <div>
+                            <label>SMS per dag:</label>
+                            <input type="number" id="smsLimit" min="0" value="50" class="input-styled">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Notities:</label>
+                    <textarea id="userNotes" class="input-styled" rows="3"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" onclick="closeModal('newUserModal')" class="btn-secondary">Annuleren</button>
+                    <button type="submit" class="btn-primary">Toevoegen</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="distribution-users.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Camera Beheer</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="camera-settings.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>IP Camera Beheer</h1>
+
+        <!-- Belangrijke Informatie -->
+        <div class="info-card">
+            <h2>⚠️ Belangrijke Vereisten</h2>
+            <div class="requirements-list">
+                <div class="requirement-item">
+                    <span class="requirement-icon">🔒</span>
+                    <div class="requirement-content">
+                        <h3>Vast IP Adres Vereist</h3>
+                        <p>De camera moet een vast IP adres hebben in het lokale netwerk. Dit kan worden ingesteld via de camera configuratie of router.</p>
+                    </div>
+                </div>
+                <div class="requirement-item">
+                    <span class="requirement-icon">👤</span>
+                    <div class="requirement-content">
+                        <h3>Camera Inloggegevens Nodig</h3>
+                        <p>Zorg dat u de gebruikersnaam en het wachtwoord van de camera bij de hand heeft. Deze zijn nodig voor de verbinding.</p>
+                    </div>
+                </div>
+            </div>
+            <a href="/docs/IP_CAMERA_SETUP.md" class="btn-secondary">Bekijk Volledige Handleiding</a>
+        </div>
+
+        <!-- Camera Toevoegen -->
+        <div class="settings-card">
+            <h2>Camera Toevoegen</h2>
+            <form id="addCameraForm">
+                <div class="form-group">
+                    <label>Camera Naam:</label>
+                    <input type="text" id="cameraName" required class="input-styled">
+                </div>
+                <div class="form-group">
+                    <label>IP Adres (vast adres in lokaal netwerk):</label>
+                    <input type="text" id="ipAddress" required class="input-styled" 
+                           pattern="^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$"
+                           placeholder="bijv. 192.168.1.100">
+                    <small class="help-text">Voer het vaste IP adres van de camera in</small>
+                </div>
+                <div class="form-group">
+                    <label>Poort:</label>
+                    <input type="number" id="port" required class="input-styled" 
+                           min="1" max="65535" value="554">
+                    <small class="help-text">Standaard: 554 (RTSP), 80 (HTTP), 80 (ONVIF)</small>
+                </div>
+                <div class="form-group">
+                    <label>Type:</label>
+                    <select id="cameraType" required class="input-styled">
+                        <option value="rtsp">RTSP (Aanbevolen)</option>
+                        <option value="http">HTTP</option>
+                        <option value="onvif">ONVIF</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Camera Gebruikersnaam:</label>
+                    <input type="text" id="username" required class="input-styled">
+                    <small class="help-text">De gebruikersnaam van de camera zelf</small>
+                </div>
+                <div class="form-group">
+                    <label>Camera Wachtwoord:</label>
+                    <input type="password" id="password" required class="input-styled">
+                    <small class="help-text">Het wachtwoord van de camera zelf</small>
+                </div>
+                <button type="submit" class="btn-primary">Camera Toevoegen</button>
+            </form>
+        </div>
+
+        <!-- Camera Overzicht -->
+        <div class="settings-card">
+            <h2>Geconfigureerde Camera's</h2>
+            <div id="cameraList" class="camera-grid">
+                <!-- Wordt dynamisch gevuld -->
+            </div>
+        </div>
+
+        <!-- Camera Preview Modal -->
+        <div id="previewModal" class="modal">
+            <div class="modal-content">
+                <h2>Camera Preview</h2>
+                <div class="camera-preview">
+                    <img id="previewImage" src="" alt="Camera Preview">
+                </div>
+                <div class="preview-controls">
+                    <button onclick="refreshPreview()" class="btn-secondary">Ververs</button>
+                    <button onclick="closePreviewModal()" class="btn-primary">Sluiten</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="camera-manager.js"></script>
+</body>
+</html>

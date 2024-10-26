@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoIP Server Monitoring</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="voip-monitoring.css" rel="stylesheet">
+</head>
+<body>
+    <div class="monitoring-container">
+        <h1>VoIP Server Status</h1>
+
+        <!-- Server Status Cards -->
+        <div class="server-grid">
+            <!-- Primaire Server -->
+            <div class="server-card">
+                <div class="server-header">
+                    <h2>Primaire Server</h2>
+                    <span class="status-badge active" id="primaryStatus">Actief</span>
+                </div>
+                <div class="server-info">
+                    <div class="info-row">
+                        <span>Server:</span>
+                        <span>voip.cheapconnect.net</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Poort:</span>
+                        <span>5080</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Latency:</span>
+                        <span id="primaryLatency">23ms</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Actieve Verbindingen:</span>
+                        <span id="primaryConnections">47</span>
+                    </div>
+                </div>
+                <div class="server-metrics">
+                    <div class="metric">
+                        <label>CPU</label>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 45%"></div>
+                        </div>
+                        <span>45%</span>
+                    </div>
+                    <div class="metric">
+                        <label>Memory</label>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 60%"></div>
+                        </div>
+                        <span>60%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backup Server -->
+            <div class="server-card">
+                <div class="server-header">
+                    <h2>Backup Server</h2>
+                    <span class="status-badge standby" id="backupStatus">Standby</span>
+                </div>
+                <div class="server-info">
+                    <div class="info-row">
+                        <span>Server:</span>
+                        <span>sip.cheapconnect.net</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Poort:</span>
+                        <span>5080</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Latency:</span>
+                        <span id="backupLatency">28ms</span>
+                    </div>
+                    <div class="info-row">
+                        <span>Actieve Verbindingen:</span>
+                        <span id="backupConnections">0</span>
+                    </div>
+                </div>
+                <div class="server-metrics">
+                    <div class="metric">
+                        <label>CPU</label>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 15%"></div>
+                        </div>
+                        <span>15%</span>
+                    </div>
+                    <div class="metric">
+                        <label>Memory</label>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 25%"></div>
+                        </div>
+                        <span>25%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actieve Verbindingen -->
+        <div class="connections-section">
+            <h2>Actieve Verbindingen</h2>
+            <div class="connection-list" id="activeConnections">
+                <!-- Wordt dynamisch gevuld -->
+            </div>
+        </div>
+
+        <!-- Recente Events -->
+        <div class="events-section">
+            <h2>Recente Events</h2>
+            <div class="event-list" id="recentEvents">
+                <!-- Wordt dynamisch gevuld -->
+            </div>
+        </div>
+
+        <!-- Server Statistieken -->
+        <div class="stats-section">
+            <h2>Server Statistieken (24u)</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Gesprekken</h3>
+                    <div class="stat-value" id="totalCalls">1,247</div>
+                    <div class="stat-chart">
+                        <canvas id="callsChart"></canvas>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <h3>Gemiddelde Duur</h3>
+                    <div class="stat-value" id="avgDuration">4:23</div>
+                    <div class="stat-chart">
+                        <canvas id="durationChart"></canvas>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <h3>Kwaliteit Score</h3>
+                    <div class="stat-value" id="qualityScore">98%</div>
+                    <div class="stat-chart">
+                        <canvas id="qualityChart"></canvas>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <h3>Failover Events</h3>
+                    <div class="stat-value" id="failoverCount">0</div>
+                    <div class="stat-chart">
+                        <canvas id="failoverChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="voip-monitoring.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+/* Wizard Styles */
+.wizard-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.wizard-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.wizard-logo {
+    max-width: 200px;
+    margin-bottom: 1rem;
+}
+
+.wizard-step {
+    display: none;
+    padding: 1rem;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+.requirements-list {
+    margin: 1rem 0;
+}
+
+.requirement-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+}
+
+.requirement-label {
+    font-weight: 500;
+}
+
+.check-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.check-icon.success::after {
+    content: "✓";
+    color: #4CAF50;
+}
+
+.check-icon.error::after {
+    content: "✗";
+    color: #f44336;
+}
+
+.installation-progress {
+    padding: 1rem;
+}
+
+.progress-bar {
+    height: 20px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress {
+    height: 100%;
+    background: #4CAF50;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.status-text {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.installation-log {
+    background: #f8f8f8;
+    padding: 1rem;
+    border-radius: 4px;
+    height: 200px;
+    overflow-y: auto;
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.wizard-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}

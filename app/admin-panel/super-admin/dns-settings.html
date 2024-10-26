@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS Instellingen - Mantelzorg Connect</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>DNS Instellingen</h1>
+        
+        <div class="ip-info">
+            <h2>Server IP</h2>
+            <div class="ip-display" id="serverIP"></div>
+            <button onclick="refreshIP()" class="btn-secondary">Ververs IP</button>
+        </div>
+
+        <div class="mail-settings">
+            <h2>Mail Server Instellingen</h2>
+            <div class="form-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="enableMail" onchange="updateMailSettings()">
+                    Mail server inschakelen
+                </label>
+            </div>
+            <div id="mailServerConfig" class="mail-server-config" style="display: none;">
+                <div class="form-group">
+                    <label>Mail Server:</label>
+                    <input type="text" id="mailServer" class="input-styled" 
+                           placeholder="mail.mantelzorgconnect.nl"
+                           onchange="updateMailSettings()">
+                </div>
+            </div>
+        </div>
+
+        <div class="dns-instructions">
+            <h2>TransIP DNS Configuratie</h2>
+            <pre id="dnsInstructions" class="instructions-box"></pre>
+            <button onclick="copyInstructions()" class="btn-primary">Kopieer Instellingen</button>
+        </div>
+
+        <div class="dns-verify">
+            <h2>DNS Verificatie</h2>
+            <button onclick="verifyDNS()" class="btn-primary">Controleer DNS</button>
+            <div id="verifyResult" class="verify-result"></div>
+            <ul id="verifyDetails" class="verify-details"></ul>
+        </div>
+    </div>
+
+    <script>
+        let dnsChecker;
+
+        async function initializeDNS() {
+            dnsChecker = DNSCheckerService.getInstance();
+            await refreshIP();
+        }
+
+        async function refreshIP() {
+            const ip = await dnsChecker.detectIPAddress();
+            document.getElementById('serverIP').textContent = ip;
+            updateDNSInstructions();
+        }
+
+        function updateMailSettings() {
+            const enableMail = document.getElementById('enableMail').checked;
+            const mailServerConfig = document.getElementById('mailServerConfig');
+            mailServerConfig.style.display = enableMail ? 'block' : 'none';
+
+            const mailServer = document.getElementById('mailServer').value;
+            dnsChecker.setMailConfig(enableMail, mailServer);
+            updateDNSInstructions();
+        }
+
+        function updateDNSInstructions() {
+            document.getElementById('dnsInstructions').textContent = dnsChecker.getDNSInstructions();
+        }
+
+        function copyInstructions() {
+            const instructions = document.getElementById('dnsInstructions').textContent;
+            navigator.clipboard.writeText(instructions);
+            alert('DNS instructies gekopieerd naar klembord!');
+        }
+
+        async function verifyDNS() {
+            const resultDiv = document.getElementById('verifyResult');
+            const detailsList = document.getElementById('verifyDetails');
+            
+            resultDiv.textContent = 'DNS configuratie wordt gecontroleerd...';
+            detailsList.innerHTML = '';
+            
+            const { success, details } = await dnsChecker.verifyDNSSetup();
+            
+            if (success) {
+                resultDiv.textContent = '✅ DNS correct geconfigureerd';
+                resultDiv.className = 'verify-result success';
+            } else {
+                resultDiv.textContent = '❌ DNS configuratie niet correct';
+                resultDiv.className = 'verify-result error';
+            }
+
+            detailsList.innerHTML = details.map(detail => `<li>${detail}</li>`).join('');
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initializeDNS);
+    </script>
+</body>
+</html>

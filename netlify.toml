@@ -1,0 +1,47 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/*"
+  to = "/maintenance.html"
+  status = 503
+  force = false
+  conditions = {maintenance = "true"}
+
+[[redirects]]
+  from = "/*"
+  to = "/500.html"
+  status = 500
+  force = false
+
+# Productie domein
+[[redirects]]
+  from = "https://mantelzorgconnect.nl/*"
+  to = "/:splat"
+  status = 200
+  force = true
+
+# Alternatief domein
+[[redirects]]
+  from = "https://mantelzorgconnect.online/*"
+  to = "/:splat"
+  status = 200
+  force = true
+
+# Test subdomein
+[[redirects]]
+  from = "https://test1.mantelzorgconnect.nl/*"
+  to = "/:splat"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"

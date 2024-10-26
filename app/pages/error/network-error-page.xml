@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" class="error-page">
+    <StackLayout class="p-4">
+        <Image src="~/images/no-internet.png" class="error-icon" width="120" height="120" />
+        <Label text="Geen internetverbinding" class="error-title h2 text-center" />
+        <Label text="Controleer je internetverbinding en probeer het opnieuw" class="error-message text-center" textWrap="true" />
+        <Button text="Opnieuw proberen" tap="{{ retryConnection }}" class="btn-primary m-t-20" />
+    </StackLayout>
+</Page>

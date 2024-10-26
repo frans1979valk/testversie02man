@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="tablet-page">
+    <ActionBar>
+        <GridLayout columns="auto, *, auto, auto" width="100%">
+            <Image src="~/images/logo.png" class="logo" verticalAlignment="center" col="0" />
+            <Label text="{{ appName }}" class="title" verticalAlignment="center" col="1" />
+            <StackLayout orientation="vertical" col="2" class="clock-container">
+                <Label text="{{ currentTime }}" class="clock-time" />
+                <Label text="{{ currentDate }}" class="clock-date" />
+            </StackLayout>
+            <Button text="NOOD" class="emergency-button" visibility="{{ emergencyEnabled ? 'visible' : 'collapsed' }}"
+                    tap="{{ onEmergency }}" col="3" />
+        </GridLayout>
+    </ActionBar>
+
+    <GridLayout rows="auto, *" columns="300, *, 250">
+        <!-- Linker Sidebar (Contacten) -->
+        <StackLayout row="0" rowSpan="2" col="0" class="sidebar">
+            <!-- Bestaande contact knoppen code blijft hetzelfde -->
+        </StackLayout>
+
+        <!-- Hoofdinhoud -->
+        <GridLayout row="0" rowSpan="2" col="1" rows="auto, *">
+            <!-- Dashboard berichten en gesprek/standby scherm blijven hetzelfde -->
+        </GridLayout>
+
+        <!-- Rechter Sidebar (Agenda) -->
+        <StackLayout row="0" rowSpan="2" col="2" class="agenda-sidebar">
+            <Label text="Dagplanning" class="section-header" />
+            <ListView items="{{ todayAppointments }}" class="appointments-list">
+                <ListView.itemTemplate>
+                    <GridLayout rows="auto" columns="auto, *" class="appointment-item">
+                        <StackLayout col="0" class="time-block">
+                            <Label text="{{ time }}" class="appointment-time" />
+                        </StackLayout>
+                        <StackLayout col="1" class="appointment-details">
+                            <Label text="{{ title }}" class="appointment-title" />
+                            <Label text="{{ description }}" class="appointment-description" textWrap="true" />
+                        </StackLayout>
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </StackLayout>
+    </GridLayout>
+</Page>

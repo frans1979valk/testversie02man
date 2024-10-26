@@ -1,0 +1,55 @@
+.emergency-container {
+    margin: 8;
+}
+
+.emergency-button {
+    background-color: #ff5252;
+    color: white;
+    font-size: 24;
+    font-weight: bold;
+    padding: 16;
+    border-radius: 32;
+    elevation: 4;
+}
+
+.emergency-button.active {
+    background-color: #ff1744;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.emergency-overlay {
+    background-color: rgba(255, 23, 68, 0.9);
+    padding: 16;
+    border-radius: 16;
+}
+
+.emergency-status {
+    color: white;
+    font-size: 20;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 8;
+}
+
+.emergency-info {
+    color: white;
+    font-size: 16;
+    text-align: center;
+    margin-bottom: 16;
+}
+
+.emergency-cancel-button {
+    background-color: white;
+    color: #ff1744;
+    font-weight: bold;
+    padding: 12;
+    border-radius: 24;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}

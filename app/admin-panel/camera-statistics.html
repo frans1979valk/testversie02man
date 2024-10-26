@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Statistieken</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Camera Prestatie Monitor</h1>
+
+        <!-- Camera Type Statistieken -->
+        <div class="stats-card">
+            <h2>Populaire Camera's</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>Meest Betrouwbaar</h3>
+                    <div id="reliableCamera" class="stat-content">
+                        <!-- Wordt dynamisch gevuld -->
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <h3>Beste Beeldkwaliteit</h3>
+                    <div id="qualityCamera" class="stat-content">
+                        <!-- Wordt dynamisch gevuld -->
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <h3>Meest Gebruiksvriendelijk</h3>
+                    <div id="usabilityCamera" class="stat-content">
+                        <!-- Wordt dynamisch gevuld -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Camera Vergelijking -->
+        <div class="comparison-card">
+            <h2>Camera Vergelijking</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Camera Type</th>
+                        <th>Betrouwbaarheid</th>
+                        <th>Beeldkwaliteit</th>
+                        <th>Gebruiksgemak</th>
+                        <th>Connectiviteit</th>
+                        <th>Prijs/Kwaliteit</th>
+                    </tr>
+                </thead>
+                <tbody id="comparisonBody">
+                    <!-- Wordt dynamisch gevuld -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Deurbel Integraties -->
+        <div class="doorbell-card">
+            <h2>Slimme Deurbel Integraties</h2>
+            <div class="doorbell-grid" id="doorbellGrid">
+                <!-- Wordt dynamisch gevuld -->
+            </div>
+        </div>
+
+        <!-- Gebruikersrechten -->
+        <div class="permissions-card">
+            <h2>Camera Toegangsrechten</h2>
+            <div class="permissions-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Gebruiker</th>
+                            <th>Camera's</th>
+                            <th>Rechten</th>
+                            <th>Acties</th>
+                        </tr>
+                    </thead>
+                    <tbody id="permissionsBody">
+                        <!-- Wordt dynamisch gevuld -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rechten Modal -->
+    <div id="permissionsModal" class="modal">
+        <div class="modal-content">
+            <h2>Camera Rechten Toewijzen</h2>
+            <form id="permissionsForm">
+                <div class="form-group">
+                    <label>Gebruiker:</label>
+                    <select id="userSelect" class="input-styled">
+                        <!-- Wordt dynamisch gevuld -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Camera's:</label>
+                    <div id="cameraCheckboxes" class="checkbox-group">
+                        <!-- Wordt dynamisch gevuld -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Rechten:</label>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" name="rights" value="view"> Bekijken
+                        </label>
+                        <label>
+                            <input type="checkbox" name="rights" value="record"> Opnemen
+                        </label>
+                        <label>
+                            <input type="checkbox" name="rights" value="share"> Delen
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" onclick="closeModal()" class="btn-secondary">Annuleren</button>
+                    <button type="submit" class="btn-primary">Opslaan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="camera-statistics.js"></script>
+</body>
+</html>

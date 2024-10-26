@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Installatie - Super Admin Dashboard</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="help-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../logo.png" alt="VIP Installatie" class="sidebar-logo">
+                <h2>Super Admin</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                    <i class="icon-dashboard"></i>Dashboard
+                </a>
+                <a href="#distributies" class="nav-item" data-section="distributions">
+                    <i class="icon-building"></i>Distributies
+                </a>
+                <a href="#voip" class="nav-item" data-section="voip">
+                    <i class="icon-phone"></i>VoIP Instellingen
+                </a>
+                <a href="#gebruikers" class="nav-item" data-section="users">
+                    <i class="icon-users"></i>Gebruikersbeheer
+                </a>
+                <a href="#email" class="nav-item" data-section="email">
+                    <i class="icon-mail"></i>Email Configuratie
+                </a>
+                <a href="#activatie" class="nav-item" data-section="activation">
+                    <i class="icon-key"></i>Activatiebeheer
+                </a>
+                <a href="#systeem" class="nav-item" data-section="system">
+                    <i class="icon-settings"></i>Systeeminstellingen
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-title">
+                    <h1>Super Admin Dashboard</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="help-toggle">
+                        <label>Help</label>
+                        <input type="checkbox" id="helpToggle" checked>
+                    </div>
+                    <button class="btn-primary" onclick="showNewDistributionModal()">
+                        <i class="icon-plus"></i> Nieuwe Distributie
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Sectie -->
+            <section id="dashboard-section" class="content-section active">
+                <div class="dashboard-grid">
+                    <div class="status-card">
+                        <h3>Actieve Distributies</h3>
+                        <div class="status-number" id="activeDistributions">2</div>
+                    </div>
+                    <div class="status-card">
+                        <h3>Totaal Gebruikers</h3>
+                        <div class="status-number" id="totalUsers">371</div>
+                    </div>
+                    <div class="status-card">
+                        <h3>VoIP Status</h3>
+                        <div class="status-text success">Actief</div>
+                    </div>
+                    <div class="status-card">
+                        <h3>Systeem Status</h3>
+                        <div class="status-text success">Operationeel</div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h2>Recente Activiteit</h2>
+                    <div class="activity-list" id="recentActivity">
+                        <!-- Wordt dynamisch gevuld -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Distributies Sectie -->
+            <section id="distributions-section" class="content-section">
+                <div class="card-grid" id="distributionsGrid">
+                    <!-- Wordt dynamisch gevuld met distributie kaarten -->
+                </div>
+            </section>
+
+            <!-- VoIP Instellingen Sectie -->
+            <section id="voip-section" class="content-section">
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h2>Globale VoIP Instellingen</h2>
+                        <div class="form-group">
+                            <label>VoIP Status</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="globalVoipEnabled" checked>
+                                <label for="globalVoipEnabled">Ingeschakeld</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Primaire SIP Server</label>
+                            <input type="text" id="primaryServer" class="input-styled" 
+                                   value="voip.cheapconnect.net">
+                        </div>
+                        <div class="form-group">
+                            <label>Alternatieve SIP Server</label>
+                            <input type="text" id="alternativeServer" class="input-styled"
+                                   value="sip.cheapconnect.net">
+                        </div>
+                        <div class="form-group">
+                            <label>Standaard SIP Poort</label>
+                            <select id="defaultPort" class="input-styled">
+                                <option value="5060">5060 (Standaard)</option>
+                                <option value="5080" selected>5080 (Aanbevolen)</option>
+                                <option value="5070">5070</option>
+                                <option value="5072">5072</option>
+                                <option value="5074">5074</option>
+                                <option value="5076">5076</option>
+                                <option value="5078">5078</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h2>Codec Instellingen</h2>
+                        <div class="codec-list" id="codecList">
+                            <div class="codec-item">
+                                <span>G.711A (alaw)</span>
+                                <input type="number" value="1" min="1" max="2">
+                            </div>
+                            <div class="codec-item">
+                                <span>G.729A/B</span>
+                                <input type="number" value="2" min="1" max="2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <h2>Distributie-specifieke Instellingen</h2>
+                    <div class="form-group">
+                        <label>Selecteer Distributie</label>
+                        <select id="distributionSelect" class="input-styled">
+                            <!-- Wordt dynamisch gevuld -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>VoIP Status voor Distributie</label>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="distributionVoipEnabled" checked>
+                            <label for="distributionVoipEnabled">Ingeschakeld</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>SIP Gebruikersnaam Voorvoegsel</label>
+                        <input type="text" id="sipPrefix" class="input-styled" value="31453">
+                    </div>
+                    <div class="form-group">
+                        <label>Nummerweergave Voorvoegsel</label>
+                        <input type="text" id="callerIdPrefix" class="input-styled" value="+31453">
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="newDistributionModal" class="modal">
+        <div class="modal-content">
+            <h2>Nieuwe Distributie</h2>
+            <form id="newDistributionForm">
+                <div class="form-group">
+                    <label>Naam:</label>
+                    <input type="text" id="distName" required class="input-styled">
+                </div>
+                <div class="form-group">
+                    <label>Domein:</label>
+                    <input type="text" id="distDomain" required class="input-styled">
+                </div>
+                <div class="form-group">
+                    <label>Primaire Kleur:</label>
+                    <input type="color" id="distColor" value="#B8860B" class="input-styled">
+                </div>
+                <div class="form-group">
+                    <label>Logo:</label>
+                    <input type="file" id="distLogo" accept="image/*" class="input-styled">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" onclick="closeModal('newDistributionModal')" 
+                            class="btn-secondary">Annuleren</button>
+                    <button type="submit" class="btn-primary">Aanmaken</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script src="voip-manager.js"></script>
+    <script src="help-manager.js"></script>
+</body>
+</html>

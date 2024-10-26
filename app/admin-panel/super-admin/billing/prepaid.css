@@ -1,0 +1,82 @@
+.rates-card,
+.bonus-card,
+.topup-card,
+.transactions-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.rates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.rate-item {
+    padding: 1rem;
+    background: #f8f8f8;
+    border-radius: 8px;
+}
+
+.rate-item ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.rate-item li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.bonus-table {
+    margin-top: 1rem;
+}
+
+.bonus-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.bonus-row.header {
+    font-weight: bold;
+    background: #f8f8f8;
+}
+
+.transaction-list {
+    margin-top: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.transaction-amount {
+    font-weight: bold;
+}
+
+.transaction-amount.positive {
+    color: #4CAF50;
+}
+
+.transaction-amount.negative {
+    color: #f44336;
+}
+
+.help-text {
+    display: block;
+    margin-top: 0.25rem;
+    color: #666;
+    font-size: 0.875rem;
+}

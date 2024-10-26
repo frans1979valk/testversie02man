@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - MantelzorgConnect</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .offline-container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        .offline-icon {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+        }
+        .offline-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .offline-message {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .btn-retry {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn-retry:hover {
+            background: #43A047;
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <img src="/images/offline.png" alt="Offline" class="offline-icon">
+        <h1 class="offline-title">Je bent offline</h1>
+        <p class="offline-message">Controleer je internetverbinding en probeer het opnieuw.</p>
+        <button onclick="window.location.reload()" class="btn-retry">Opnieuw proberen</button>
+    </div>
+</body>
+</html>

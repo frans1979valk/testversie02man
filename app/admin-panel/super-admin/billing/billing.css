@@ -1,0 +1,73 @@
+/* Voeg deze stijlen toe aan het bestaande CSS bestand */
+
+.payment-options {
+    background-color: #f8f8f8;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.payment-method-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.ideal-banks {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.payment-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+}
+
+.payment-status.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.payment-status.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.payment-status.failed {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Mollie specifieke stijlen */
+.mollie-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.mollie-method-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mollie-method-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.mollie-method-card.selected {
+    border-color: var(--primary-color);
+    background-color: rgba(184, 134, 11, 0.1);
+}

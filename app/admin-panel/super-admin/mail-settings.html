@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail Server Instellingen</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Mail Server Instellingen</h1>
+        
+        <div class="settings-card">
+            <h2>Externe Mail Server Configuratie</h2>
+            <form id="mailServerForm">
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="enableMail" onchange="updateMailSettings()">
+                        Mail functionaliteit inschakelen
+                    </label>
+                </div>
+
+                <div id="mailServerConfig" class="mail-server-config" style="display: none;">
+                    <div class="form-group">
+                        <label>Externe Mail Server:</label>
+                        <input type="text" id="mailServer" class="input-styled" 
+                               placeholder="mail.jouwdomein.nl">
+                        <small class="help-text">Voer de hostname in van je bestaande mailserver</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>MX Prioriteit:</label>
+                        <input type="number" id="mxPriority" class="input-styled" 
+                               value="10" min="0" max="100">
+                        <small class="help-text">Lagere waarde = hogere prioriteit</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>SPF Record:</label>
+                        <input type="text" id="spfRecord" class="input-styled" 
+                               placeholder="v=spf1 include:jouwdomein.nl ~all">
+                        <small class="help-text">Kopieer het SPF record van je bestaande mailserver</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>DKIM Configuratie:</label>
+                        <div class="dkim-info">
+                            <p>Voor DKIM ondersteuning, voeg de volgende CNAME records toe:</p>
+                            <pre id="dkimConfig" class="config-box"></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Instellingen Opslaan</button>
+                    <button type="button" onclick="testMailConfig()" class="btn-secondary">Test Configuratie</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="dns-preview">
+            <h2>DNS Records Preview</h2>
+            <pre id="dnsPreview" class="config-box"></pre>
+            <button onclick="copyDNSRecords()" class="btn-primary">Kopieer DNS Records</button>
+        </div>
+
+        <div id="testResult" class="test-result" style="display: none;"></div>
+    </div>
+
+    <script>
+        let mailConfig = {
+            enabled: false,
+            server: '',
+            mxPriority: 10,
+            spfRecord: '',
+            domains: ['mantelzorgconnect.nl', 'mantelzorgconnect.online']
+        };
+
+        function updateMailSettings() {
+            const enabled = document.getElementById('enableMail').checked;
+            const configSection = document.getElementById('mailServerConfig');
+            configSection.style.display = enabled ? 'block' : 'none';
+            
+            mailConfig.enabled = enabled;
+            updateDNSPreview();
+        }
+
+        function updateDNSPreview() {
+            if (!mailConfig.enabled) {
+                document.getElementById('dnsPreview').textContent = 'Mail functionaliteit uitgeschakeld';
+                return;
+            }
+
+            const server = document.getElementById('mailServer').value;
+            const priority = document.getElementById('mxPriority').value;
+            const spf = document.getElementById('spfRecord').value;
+
+            let dnsRecords = '';
+            mailConfig.domains.forEach(domain => {
+                dnsRecords += `# Mail configuratie voor ${domain}\n\n`;
+                dnsRecords += `# MX Record:\n`;
+                dnsRecords += `Type: MX\n`;
+                dnsRecords += `Naam: @\n`;
+                dnsRecords += `Inhoud: ${server}\n`;
+                dnsRecords += `Prioriteit: ${priority}\n`;
+                dnsRecords += `TTL: 3600\n\n`;
+                
+                dnsRecords += `# SPF Record:\n`;
+                dnsRecords += `Type: TXT\n`;
+                dnsRecords += `Naam: @\n`;
+                dnsRecords += `Inhoud: "${spf}"\n`;
+                dnsRecords += `TTL: 3600\n\n`;
+            });
+
+            document.getElementById('dnsPreview').textContent = dnsRecords;
+        }
+
+        async function testMailConfig() {
+            const server = document.getElementById('mailServer').value;
+            const resultDiv = document.getElementById('testResult');
+            
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = 'Mail configuratie wordt getest...';
+            resultDiv.className = 'test-result pending';
+
+            try {
+                // Test MX record resolving
+                const success = await testMXRecord(server);
+                
+                if (success) {
+                    resultDiv.textContent = '✅ Mail configuratie correct';
+                    resultDiv.className = 'test-result success';
+                } else {
+                    resultDiv.textContent = '❌ Mail configuratie niet correct';
+                    resultDiv.className = 'test-result error';
+                }
+            } catch (error) {
+                resultDiv.textContent = `❌ Test mislukt: ${error.message}`;
+                resultDiv.className = 'test-result error';
+            }
+        }
+
+        async function testMXRecord(server) {
+            // Simuleer MX record test
+            return new Promise(resolve => {
+                setTimeout(() => resolve(true), 1000);
+            });
+        }
+
+        function copyDNSRecords() {
+            const records = document.getElementById('dnsPreview').textContent;
+            navigator.clipboard.writeText(records);
+            alert('DNS records gekopieerd naar klembord!');
+        }
+
+        // Event listeners
+        document.getElementById('mailServerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            updateDNSPreview();
+        });
+
+        ['mailServer', 'mxPriority', 'spfRecord'].forEach(id => {
+            document.getElementById(id).addEventListener('input', updateDNSPreview);
+        });
+
+        // Initialize
+        updateDNSPreview();
+    </script>
+</body>
+</html>

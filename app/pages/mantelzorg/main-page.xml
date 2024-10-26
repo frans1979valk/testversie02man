@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="mantelzorg-page">
+    <ActionBar>
+        <GridLayout columns="auto, *, auto" width="100%">
+            <Image src="~/images/mantelzorg-logo.png" class="logo" verticalAlignment="center" col="0" />
+            <Label text="Mantelzorg Connect" class="title" verticalAlignment="center" col="1" />
+            <Button text="NOOD" tap="{{ onEmergency }}" class="emergency-button" col="2" />
+        </GridLayout>
+    </ActionBar>
+
+    <GridLayout rows="*, auto">
+        <!-- Hoofdscherm met grote knoppen -->
+        <ScrollView row="0">
+            <StackLayout class="main-content p-4">
+                <!-- Contacten Sectie -->
+                <Label text="Mijn Contacten" class="section-title" />
+                <WrapLayout orientation="horizontal" class="contacts-grid">
+                    <StackLayout class="contact-button" tap="{{ onFamilyTap }}">
+                        <Image src="~/images/family.png" class="contact-icon" />
+                        <Label text="Familie" class="contact-label" />
+                    </StackLayout>
+                    <StackLayout class="contact-button" tap="{{ onCaregiverTap }}">
+                        <Image src="~/images/caregiver.png" class="contact-icon" />
+                        <Label text="Zorgverlener" class="contact-label" />
+                    </StackLayout>
+                </WrapLayout>
+
+                <!-- Snelle Berichten -->
+                <Label text="Snelle Berichten" class="section-title" />
+                <StackLayout class="quick-messages">
+                    <Button text="Kunt u mij helpen?" tap="{{ sendQuickMessage }}" class="message-button" />
+                    <Button text="Wanneer komt u op bezoek?" tap="{{ sendQuickMessage }}" class="message-button" />
+                    <Button text="Tijd voor medicijnen" tap="{{ sendQuickMessage }}" class="message-button" />
+                    <Button text="Hoe gaat het met u?" tap="{{ sendQuickMessage }}" class="message-button" />
+                </StackLayout>
+
+                <!-- Laatste Activiteit -->
+                <Label text="Laatste Activiteit" class="section-title" />
+                <ListView items="{{ recentActivity }}" class="activity-list">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="auto, *" class="activity-item">
+                            <Image src="{{ icon }}" class="activity-icon" col="0" />
+                            <Label text="{{ message }}" class="activity-message" col="1" textWrap="true" />
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Onderste navigatiebalk -->
+        <GridLayout row="1" columns="*, *, *" class="nav-bar">
+            <Button text="Bellen" tap="{{ showContacts }}" class="nav-button" col="0" />
+            <Button text="Berichten" tap="{{ showMessages }}" class="nav-button" col="1" />
+            <Button text="Help" tap="{{ showHelp }}" class="nav-button" col="2" />
+        </GridLayout>
+    </GridLayout>
+</Page>

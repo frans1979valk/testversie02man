@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<GridLayout class="emergency-container" rows="auto" columns="*">
+    <Button text="NOOD" 
+            tap="{{ onEmergencyTap }}"
+            class="emergency-button {{ isEmergencyActive ? 'active' : '' }}" 
+            col="0" />
+    
+    <!-- Nood Actief Overlay -->
+    <StackLayout visibility="{{ isEmergencyActive ? 'visible' : 'collapsed' }}"
+                 class="emergency-overlay"
+                 col="0">
+        <Label text="Noodoproep Actief" class="emergency-status" />
+        <Label text="{{ emergencyMessage }}" class="emergency-info" textWrap="true" />
+        <Button text="Annuleer Noodoproep" 
+                tap="{{ cancelEmergency }}"
+                class="emergency-cancel-button" />
+    </StackLayout>
+</GridLayout>

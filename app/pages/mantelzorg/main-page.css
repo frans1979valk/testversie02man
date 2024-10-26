@@ -1,0 +1,99 @@
+.mantelzorg-page {
+    background-color: #f5f5f5;
+}
+
+.section-title {
+    font-size: 24;
+    font-weight: bold;
+    color: #333;
+    margin: 16 0 8 0;
+}
+
+/* Contact Knoppen */
+.contacts-grid {
+    margin: 10;
+}
+
+.contact-button {
+    width: 45%;
+    height: 150;
+    margin: 8;
+    padding: 16;
+    background-color: white;
+    border-radius: 16;
+    elevation: 2;
+}
+
+.contact-icon {
+    width: 64;
+    height: 64;
+    margin-bottom: 8;
+}
+
+.contact-label {
+    font-size: 20;
+    color: #333;
+    text-align: center;
+}
+
+/* Snelle Berichten */
+.message-button {
+    margin: 8;
+    padding: 16;
+    background-color: white;
+    border-radius: 12;
+    font-size: 18;
+    color: #333;
+    text-align: left;
+    elevation: 2;
+}
+
+/* Activiteiten Lijst */
+.activity-list {
+    margin-top: 16;
+    background-color: white;
+    border-radius: 12;
+}
+
+.activity-item {
+    padding: 12;
+    border-bottom-width: 1;
+    border-bottom-color: #eee;
+}
+
+.activity-icon {
+    width: 32;
+    height: 32;
+    margin-right: 12;
+}
+
+.activity-message {
+    font-size: 16;
+    color: #333;
+}
+
+/* Navigatie Balk */
+.nav-bar {
+    background-color: white;
+    padding: 8;
+    elevation: 8;
+}
+
+.nav-button {
+    margin: 4;
+    padding: 12;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18;
+    border-radius: 8;
+}
+
+/* Noodknop */
+.emergency-button {
+    background-color: #ff5252;
+    color: white;
+    font-weight: bold;
+    padding: 8 16;
+    border-radius: 20;
+    margin-right: 8;
+}

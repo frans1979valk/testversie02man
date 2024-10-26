@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar title="Audio Instellingen">
+        <NavigationButton visibility="visible" tap="onBackTap" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <Label text="Audio Apparaten Configuratie" class="h2 text-center m-b-20" />
+
+            <!-- Input Apparaten -->
+            <StackLayout class="input-section m-b-20">
+                <Label text="Microfoon Selectie" class="h3" />
+                <ListView items="{{ audioInputDevices }}" class="list-group">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="*, auto" class="list-group-item">
+                            <Label text="{{ label }}" col="0" />
+                            <Button text="{{ isSelected ? '✓' : 'Selecteer' }}" 
+                                    tap="{{ $parent.selectInput }}"
+                                    class="{{ isSelected ? 'btn-success' : 'btn-primary' }}"
+                                    col="1" />
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+                <Button text="Test Microfoon" tap="{{ testInput }}" class="btn-secondary m-t-10" />
+            </StackLayout>
+
+            <!-- Output Apparaten -->
+            <StackLayout class="output-section m-b-20">
+                <Label text="Speaker Selectie" class="h3" />
+                <ListView items="{{ audioOutputDevices }}" class="list-group">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="*, auto" class="list-group-item">
+                            <Label text="{{ label }}" col="0" />
+                            <Button text="{{ isSelected ? '✓' : 'Selecteer' }}" 
+                                    tap="{{ $parent.selectOutput }}"
+                                    class="{{ isSelected ? 'btn-success' : 'btn-primary' }}"
+                                    col="1" />
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+                <Button text="Test Speaker" tap="{{ testOutput }}" class="btn-secondary m-t-10" />
+            </StackLayout>
+
+            <!-- Test Resultaten -->
+            <StackLayout class="test-results m-t-20" visibility="{{ showTestResults ? 'visible' : 'collapsed' }}">
+                <Label text="Test Resultaten" class="h3" />
+                <GridLayout rows="auto, auto" columns="*, *" class="m-t-10">
+                    <Label text="Microfoon:" col="0" row="0" class="test-label" />
+                    <Label text="{{ inputTestResult }}" col="1" row="0" class="test-value" />
+                    
+                    <Label text="Speaker:" col="0" row="1" class="test-label" />
+                    <Label text="{{ outputTestResult }}" col="1" row="1" class="test-value" />
+                </GridLayout>
+            </StackLayout>
+
+            <Button text="Opslaan en Doorgaan" tap="{{ saveSettings }}" 
+                    class="btn-primary m-t-20" isEnabled="{{ canSave }}" />
+        </StackLayout>
+    </ScrollView>
+</Page>

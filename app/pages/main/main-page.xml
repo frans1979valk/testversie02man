@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="page">
+    <ActionBar>
+        <NavigationButton visibility="collapsed" />
+        <GridLayout columns="auto, *" width="100%">
+            <Image src="~/images/logo.png" class="logo" verticalAlignment="center" col="0" />
+            <Label text="VIP Installatie" class="title" verticalAlignment="center" col="1" />
+        </GridLayout>
+    </ActionBar>
+
+    <GridLayout>
+        <!-- Activatie Scherm -->
+        <StackLayout visibility="{{ isActivated ? 'collapsed' : 'visible' }}" class="activation-screen">
+            <Label text="App Activatie" class="activation-title" />
+            <Label text="Scan de QR code uit je e-mail om de app te activeren" textWrap="true" class="activation-text" />
+            <Button text="Scan QR Code" tap="{{ scanQRCode }}" class="bg-[#DAA520] text-white" />
+        </StackLayout>
+
+        <!-- Hoofd App Content -->
+        <ScrollView visibility="{{ isActivated ? 'visible' : 'collapsed' }}">
+            <StackLayout class="main-content p-4">
+                <!-- Dashboard berichten -->
+                <StackLayout class="dashboard-messages" visibility="{{ hasDashboardMessages ? 'visible' : 'collapsed' }}">
+                    <Label text="{{ currentDashboardMessage }}" textWrap="true" class="dashboard-message" />
+                </StackLayout>
+
+                <!-- Foto Knoppen Grid -->
+                <WrapLayout orientation="horizontal" itemWidth="33%" class="photo-grid">
+                    <!-- Fiber Support -->
+                    <StackLayout class="photo-button-container" tap="{{ onFiberSupport }}">
+                        <Image src="~/images/contacts/fiber-support.jpg" class="contact-photo" />
+                        <Label text="Fiber Support" class="contact-name" />
+                    </StackLayout>
+
+                    <!-- Internet Storing -->
+                    <StackLayout class="photo-button-container" tap="{{ onInternetStoring }}">
+                        <Image src="~/images/contacts/internet-support.jpg" class="contact-photo" />
+                        <Label text="Internet Storing" class="contact-name" />
+                    </StackLayout>
+
+                    <!-- TV Storing -->
+                    <StackLayout class="photo-button-container" tap="{{ onTVStoring }}">
+                        <Image src="~/images/contacts/tv-support.jpg" class="contact-photo" />
+                        <Label text="TV Storing" class="contact-name" />
+                    </StackLayout>
+
+                    <!-- Algemene Support -->
+                    <StackLayout class="photo-button-container" tap="{{ onGeneralSupport }}">
+                        <Image src="~/images/contacts/general-support.jpg" class="contact-photo" />
+                        <Label text="Algemene Support" class="contact-name" />
+                    </StackLayout>
+                </WrapLayout>
+
+                <!-- Laatste activiteit -->
+                <StackLayout class="activity-section">
+                    <Label text="Laatste Activiteit" class="h2" />
+                    <ListView items="{{ recentActivity }}" class="activity-list">
+                        <ListView.itemTemplate>
+                            <GridLayout columns="auto, *" class="activity-item p-2">
+                                <Label col="0" text="{{ icon }}" class="activity-icon" />
+                                <Label col="1" text="{{ message }}" textWrap="true" class="activity-message" />
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>

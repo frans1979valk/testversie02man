@@ -1,0 +1,84 @@
+/* Help System Styles */
+.help-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
+}
+
+.help-button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+.help-button:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.help-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.help-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.help-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.help-text {
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.help-text ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.help-text li {
+    margin-bottom: 0.5rem;
+}
+
+.help-text strong {
+    color: var(--text-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .help-content {
+        width: 95%;
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+}

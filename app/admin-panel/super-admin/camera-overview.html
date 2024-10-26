@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Overzicht - Super Admin</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Camera Overzicht per Distributie</h1>
+
+        <!-- Distributie Selector -->
+        <div class="distribution-select">
+            <label>Selecteer Distributie:</label>
+            <select id="distributionSelect" class="input-styled">
+                <!-- Wordt dynamisch gevuld -->
+            </select>
+        </div>
+
+        <!-- Camera Feature Toggle -->
+        <div class="feature-toggle-card">
+            <div class="toggle-header">
+                <h2>Camera Functionaliteit</h2>
+                <label class="switch">
+                    <input type="checkbox" id="cameraFeatureToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <p class="toggle-description">
+                Schakel camera functionaliteit in/uit voor deze distributie
+            </p>
+        </div>
+
+        <!-- Camera Statistieken -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Actieve Camera's</h3>
+                <div class="stat-value" id="activeCameras">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Totaal Camera's</h3>
+                <div class="stat-value" id="totalCameras">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Online Camera's</h3>
+                <div class="stat-value" id="onlineCameras">0</div>
+            </div>
+        </div>
+
+        <!-- Camera Lijst -->
+        <div class="camera-list">
+            <h2>Geconfigureerde Camera's</h2>
+            <div id="cameraGrid" class="camera-grid">
+                <!-- Wordt dynamisch gevuld -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Camera Details Modal -->
+    <div id="cameraDetailsModal" class="modal">
+        <div class="modal-content">
+            <h2>Camera Details</h2>
+            <div class="camera-details">
+                <div class="detail-row">
+                    <span>Naam:</span>
+                    <span id="detailName"></span>
+                </div>
+                <div class="detail-row">
+                    <span>IP Adres:</span>
+                    <span id="detailIP"></span>
+                </div>
+                <div class="detail-row">
+                    <span>Type:</span>
+                    <span id="detailType"></span>
+                </div>
+                <div class="detail-row">
+                    <span>Laatste Activiteit:</span>
+                    <span id="detailLastActive"></span>
+                </div>
+                <div class="detail-row">
+                    <span>Gebruikers:</span>
+                    <span id="detailUsers"></span>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button onclick="closeModal()" class="btn-secondary">Sluiten</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="camera-overview.js"></script>
+</body>
+</html>

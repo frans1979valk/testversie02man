@@ -1,0 +1,83 @@
+.pricing-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.pricing-options {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.pricing-option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.pricing-option:hover {
+    border-color: var(--primary-color);
+}
+
+.option-label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.option-description {
+    color: #666;
+    font-size: 0.875rem;
+}
+
+.pricing-table {
+    margin-top: 1rem;
+}
+
+.pricing-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.pricing-row.header {
+    font-weight: bold;
+    background: #f8f8f8;
+}
+
+.price-input {
+    width: 100px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: right;
+}
+
+.discount-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.unit {
+    margin-left: 0.5rem;
+    color: #666;
+}
+
+ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.25rem;
+    color: #666;
+}

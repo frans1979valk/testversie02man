@@ -1,0 +1,57 @@
+.video-call-page {
+    background-color: black;
+}
+
+.contact-name {
+    color: white;
+    font-size: 20;
+    font-weight: bold;
+}
+
+.call-duration {
+    color: white;
+    font-size: 16;
+    margin-right: 16;
+}
+
+.remote-video {
+    background-color: #333;
+    width: 100%;
+    height: 100%;
+}
+
+.local-video {
+    width: 120;
+    height: 160;
+    background-color: #666;
+    border-radius: 8;
+    margin: 16;
+    vertical-align: top;
+    horizontal-align: right;
+}
+
+.controls-bar {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 16;
+}
+
+.control-button {
+    width: 60;
+    height: 60;
+    border-radius: 30;
+    background-color: #666;
+    color: white;
+    font-size: 24;
+}
+
+.control-button.end-call {
+    background-color: #ff5252;
+}
+
+.control-button.muted {
+    background-color: #ff8f00;
+}
+
+.control-button.camera-off {
+    background-color: #ff8f00;
+}

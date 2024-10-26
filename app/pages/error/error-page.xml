@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="error-page">
+    <ActionBar>
+        <NavigationButton visibility="visible" tap="onBackTap" />
+        <Label text="Foutmelding" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="error-container p-4">
+            <Image src="~/images/error.png" class="error-icon" width="120" height="120" />
+            
+            <Label text="{{ errorTitle }}" class="error-title h2 text-center" textWrap="true" />
+            <Label text="{{ errorMessage }}" class="error-message text-center" textWrap="true" />
+            
+            <GridLayout rows="auto" columns="*,*" class="error-details m-t-20">
+                <Label text="Foutcode:" col="0" class="error-label" />
+                <Label text="{{ errorCode }}" col="1" class="error-value" />
+            </GridLayout>
+
+            <GridLayout rows="auto" columns="*,*" class="error-details">
+                <Label text="Tijdstip:" col="0" class="error-label" />
+                <Label text="{{ errorTime }}" col="1" class="error-value" />
+            </GridLayout>
+
+            <GridLayout rows="auto" columns="*,*" class="error-details">
+                <Label text="Type:" col="0" class="error-label" />
+                <Label text="{{ errorType }}" col="1" class="error-value" />
+            </GridLayout>
+
+            <StackLayout class="technical-details m-t-20" visibility="{{ showTechnicalDetails ? 'visible' : 'collapsed' }}">
+                <Label text="Technische Details:" class="technical-title" />
+                <TextView text="{{ technicalDetails }}" editable="false" class="technical-text" />
+                <Label text="{{ stackTrace }}" textWrap="true" class="stack-trace" />
+            </StackLayout>
+
+            <Button text="Toon Technische Details" tap="{{ toggleTechnicalDetails }}" 
+                    class="btn-secondary m-t-20" />
+
+            <Button text="Opnieuw Proberen" tap="{{ retryAction }}" 
+                    class="btn-primary m-t-10" />
+
+            <Button text="Terug naar Dashboard" tap="{{ goToDashboard }}" 
+                    class="btn-outline m-t-10" />
+
+            <Button text="Support Contacteren" tap="{{ contactSupport }}" 
+                    class="btn-outline m-t-10" visibility="{{ isCriticalError ? 'visible' : 'collapsed' }}" />
+        </StackLayout>
+    </ScrollView>
+</Page>

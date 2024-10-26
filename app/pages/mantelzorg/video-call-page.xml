@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="video-call-page">
+    <ActionBar>
+        <GridLayout columns="auto, *, auto" width="100%">
+            <Label text="{{ contactName }}" class="contact-name" col="1" />
+            <Label text="{{ callDuration }}" class="call-duration" col="2" />
+        </GridLayout>
+    </ActionBar>
+
+    <GridLayout rows="*, auto">
+        <!-- Video Streams -->
+        <GridLayout row="0">
+            <!-- Remote Video (groot) -->
+            <VideoPlayer src="{{ remoteStream }}" 
+                        class="remote-video"
+                        autoplay="true" />
+            
+            <!-- Lokale Video (klein, overlay) -->
+            <VideoPlayer src="{{ localStream }}" 
+                        class="local-video"
+                        autoplay="true" />
+        </GridLayout>
+
+        <!-- Bedieningsknoppen -->
+        <GridLayout row="1" columns="*, *, *" class="controls-bar">
+            <Button text="🔇" tap="{{ toggleMute }}" 
+                    class="{{ isMuted ? 'control-button muted' : 'control-button' }}" 
+                    col="0" />
+            
+            <Button text="📞" tap="{{ endCall }}" 
+                    class="control-button end-call" 
+                    col="1" />
+            
+            <Button text="🎥" tap="{{ toggleCamera }}" 
+                    class="{{ isCameraOff ? 'control-button camera-off' : 'control-button' }}" 
+                    col="2" />
+        </GridLayout>
+    </GridLayout>
+</Page>

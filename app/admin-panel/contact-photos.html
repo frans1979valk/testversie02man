@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Foto's Beheren</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div id="featureDisabled" class="feature-disabled" style="display: none;">
+            <h2>Contact Foto's zijn uitgeschakeld</h2>
+            <p>Deze functie is momenteel niet beschikbaar voor uw distributie.</p>
+            <p>Neem contact op met de super admin voor meer informatie.</p>
+        </div>
+
+        <div id="photoManager" class="photo-manager">
+            <h1>Contact Foto's Beheren</h1>
+            
+            <div class="photo-grid">
+                <!-- Fiber Support -->
+                <div class="photo-card">
+                    <div class="photo-preview">
+                        <img src="../images/contacts/fiber-support.jpg" alt="Fiber Support" id="fiberSupportPreview">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Fiber Support</h3>
+                        <input type="file" accept="image/*" onchange="photoManager.updatePhoto('fiberSupport', this)">
+                    </div>
+                </div>
+
+                <!-- Internet Storing -->
+                <div class="photo-card">
+                    <div class="photo-preview">
+                        <img src="../images/contacts/internet-support.jpg" alt="Internet Support" id="internetSupportPreview">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Internet Storing</h3>
+                        <input type="file" accept="image/*" onchange="photoManager.updatePhoto('internetSupport', this)">
+                    </div>
+                </div>
+
+                <!-- TV Storing -->
+                <div class="photo-card">
+                    <div class="photo-preview">
+                        <img src="../images/contacts/tv-support.jpg" alt="TV Support" id="tvSupportPreview">
+                    </div>
+                    <div class="photo-info">
+                        <h3>TV Storing</h3>
+                        <input type="file" accept="image/*" onchange="photoManager.updatePhoto('tvSupport', this)">
+                    </div>
+                </div>
+
+                <!-- Algemene Support -->
+                <div class="photo-card">
+                    <div class="photo-preview">
+                        <img src="../images/contacts/general-support.jpg" alt="Algemene Support" id="generalSupportPreview">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Algemene Support</h3>
+                        <input type="file" accept="image/*" onchange="photoManager.updatePhoto('generalSupport', this)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo-guidelines">
+                <h2>Richtlijnen voor Foto's</h2>
+                <ul>
+                    <li>Gebruik professionele pasfoto's</li>
+                    <li>Aanbevolen formaat: 400x400 pixels</li>
+                    <li>Maximale bestandsgrootte: 200KB</li>
+                    <li>Ondersteunde formaten: JPG, PNG</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="contact-photos.js"></script>
+</body>
+</html>

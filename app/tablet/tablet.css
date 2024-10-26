@@ -1,0 +1,63 @@
+/* Voeg deze stijlen toe aan de bestaande CSS */
+
+/* Klok Stijlen */
+.clock-container {
+    text-align: right;
+    margin-right: 20;
+}
+
+.clock-time {
+    font-size: 24;
+    font-weight: bold;
+    color: #333333;
+}
+
+.clock-date {
+    font-size: 14;
+    color: #666666;
+}
+
+/* Agenda Sidebar */
+.agenda-sidebar {
+    background-color: white;
+    border-left-width: 1;
+    border-left-color: #EEEEEE;
+    width: 250;
+}
+
+.appointments-list {
+    height: 100%;
+}
+
+.appointment-item {
+    padding: 10;
+    border-bottom-width: 1;
+    border-bottom-color: #EEEEEE;
+}
+
+.time-block {
+    background-color: #F0F0F0;
+    padding: 8;
+    border-radius: 4;
+    width: 60;
+    margin-right: 10;
+}
+
+.appointment-time {
+    font-size: 14;
+    font-weight: bold;
+    text-align: center;
+    color: #333333;
+}
+
+.appointment-title {
+    font-size: 16;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 4;
+}
+
+.appointment-description {
+    font-size: 14;
+    color: #666666;
+}

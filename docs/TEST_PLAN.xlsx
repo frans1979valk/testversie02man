@@ -1,0 +1,281 @@
+# VIP Installatie Test Plan
+
+## 1. Functionele Tests
+
+### 1.1 VoIP Functionaliteit
+- [ ] SIP registratie
+  * Controleer verbinding met primaire server
+  * Test failover naar alternatieve server
+  * Verifieer registratie timeout en herverbinding
+
+- [ ] Audio Kwaliteit
+  * Test G.711A codec
+  * Test G.729A/B codec
+  * Controleer echo cancellation
+  * Test verschillende netwerk condities
+
+- [ ] Gespreksfuncties
+  * Uitgaand gesprek
+  * Inkomend gesprek
+  * Mute/unmute
+  * Speaker aan/uit
+  * Volume regeling
+  * Gesprek doorverbinden
+
+### 1.2 SMS Functionaliteit
+- [ ] Template Berichten
+  * Aanmaken template
+  * Bewerken template
+  * Verwijderen template
+  * Variabelen in templates
+
+- [ ] Verzenden
+  * Enkel bericht
+  * Bulk berichten
+  * Statusrapportage
+  * Foutafhandeling
+
+### 1.3 Gebruikersbeheer
+- [ ] VIP Niveaus
+  * VIP1 functionaliteiten
+  * VIP2 functionaliteiten
+  * VIP3 functionaliteiten
+  * Limieten per niveau
+
+- [ ] Activatie
+  * QR code scanning
+  * Handmatige activatie
+  * Heractivatie procedure
+  * Blokkering bij misbruik
+
+### 1.4 Facturatie
+- [ ] Beltegoed
+  * Toevoegen krediet
+  * Verbruik monitoring
+  * Waarschuwingen bij laag saldo
+  * Automatische blokkering
+
+- [ ] Facturen
+  * Genereren factuur
+  * BTW berekening (21%)
+  * PDF export
+  * Factuurhistorie
+
+- [ ] Mollie Integratie
+  * iDEAL betaling
+  * Creditcard betaling
+  * Webhook verwerking
+  * Foutafhandeling
+
+## 2. Technische Tests
+
+### 2.1 Database
+- [ ] SQLite Performance
+  * CRUD operaties
+  * Concurrent access
+  * Backup/restore
+  * Migraties
+
+### 2.2 Security
+- [ ] Authenticatie
+  * Login procedure
+  * Wachtwoord reset
+  * 2FA werking
+  * Session management
+
+- [ ] Autorisatie
+  * Rol-gebaseerde toegang
+  * API beveiliging
+  * Rate limiting
+  * IP whitelisting
+
+### 2.3 Performance
+- [ ] Load Testing
+  * Concurrent users
+  * API response times
+  * Database queries
+  * Memory gebruik
+
+- [ ] Stress Testing
+  * Maximum gebruikers
+  * Recovery na crash
+  * Resource limieten
+  * Error handling
+
+## 3. UI/UX Tests
+
+### 3.1 Mobile App
+- [ ] Navigatie
+  * Menu structuur
+  * Back button gedrag
+  * Deep linking
+  * State behoud
+
+- [ ] Responsiveness
+  * Verschillende schermgroottes
+  * Orientatie wijzigingen
+  * Keyboard handling
+  * Touch interacties
+
+### 3.2 Web App
+- [ ] Browser Compatibiliteit
+  * Chrome
+  * Firefox
+  * Safari
+  * Edge
+
+- [ ] Responsive Design
+  * Desktop layout
+  * Tablet layout
+  * Mobile layout
+  * Print layout
+
+## 4. Integratie Tests
+
+### 4.1 VoIP Server
+- [ ] Connectiviteit
+  * Firewall regels
+  * NAT traversal
+  * SIP ALG bypass
+  * Failover scenario's
+
+### 4.2 SMS Gateway
+- [ ] Berichten Flow
+  * Queue verwerking
+  * Retry mechanisme
+  * DLR verwerking
+  * Error handling
+
+### 4.3 Payment Provider
+- [ ] Mollie Flow
+  * Payment lifecycle
+  * Webhook verwerking
+  * Refund proces
+  * Administratie
+
+## 5. Systeem Tests
+
+### 5.1 Installatie
+- [ ] Setup Wizard
+  * Database configuratie
+  * VoIP instellingen
+  * Admin account
+  * Initiële data
+
+### 5.2 Backup & Recovery
+- [ ] Backup Procedures
+  * Database backup
+  * Configuratie files
+  * User data
+  * Restore test
+
+### 5.3 Monitoring
+- [ ] Logging
+  * Error logging
+  * Audit trail
+  * Performance metrics
+  * Security events
+
+## 6. Acceptatie Tests
+
+### 6.1 Functioneel
+- [ ] Use Cases
+  * Beheerder workflows
+  * Gebruiker workflows
+  * Super admin workflows
+  * Error scenarios
+
+### 6.2 Non-Functioneel
+- [ ] Performance
+  * Response times
+  * Resource gebruik
+  * Schaalbaarheid
+  * Stabiliteit
+
+### 6.3 Documentatie
+- [ ] Handleidingen
+  * Installatie guide
+  * User manual
+  * Admin guide
+  * API docs
+
+## Test Resultaten
+
+| Test ID | Categorie | Beschrijving | Status | Opmerkingen |
+|---------|-----------|--------------|--------|-------------|
+| VoIP-001| VoIP | SIP Registratie | | |
+| VoIP-002| VoIP | Audio Kwaliteit | | |
+| SMS-001 | SMS | Template Beheer | | |
+| SMS-002 | SMS | Verzending | | |
+| USR-001 | Users | VIP Niveaus | | |
+| USR-002 | Users | Activatie | | |
+| FIN-001 | Finance | Beltegoed | | |
+| FIN-002 | Finance | Facturatie | | |
+| SEC-001 | Security | Auth | | |
+| SEC-002 | Security | Autorisatie | | |
+| UI-001  | Interface | Mobile App | | |
+| UI-002  | Interface | Web App | | |
+| SYS-001 | System | Installation | | |
+| SYS-002 | System | Backup | | |
+
+## Testomgeving Specificaties
+
+### Hardware
+- CPU: 2 cores minimum
+- RAM: 4GB minimum
+- Storage: 20GB minimum
+- Network: 100Mbps minimum
+
+### Software
+- OS: Ubuntu Server 20.04 LTS
+- Node.js: v14+
+- Database: SQLite/PostgreSQL
+- SSL: Let's Encrypt certificaat
+
+### Tools
+- Postman voor API tests
+- JMeter voor load tests
+- Chrome DevTools voor frontend tests
+- Wireshark voor netwerk analyse
+
+## Test Procedures
+
+1. Voorbereiding
+   - Clean database state
+   - Reset configuraties
+   - Clear logs
+   - Start monitoring
+
+2. Uitvoering
+   - Volg test scenarios
+   - Log resultaten
+   - Document issues
+   - Capture metrics
+
+3. Analyse
+   - Review resultaten
+   - Categoriseer issues
+   - Prioriteer fixes
+   - Update documentatie
+
+4. Rapportage
+   - Test coverage
+   - Pass/fail ratio
+   - Performance metrics
+   - Aanbevelingen
+
+## Issue Tracking
+
+| Issue ID | Prioriteit | Status | Beschrijving | Impact | Oplossing |
+|----------|------------|--------|--------------|---------|-----------|
+| | | | | | |
+
+## Sign-off Criteria
+
+- [ ] Alle kritieke tests passed
+- [ ] Geen blocker issues
+- [ ] Performance targets behaald
+- [ ] Security audit completed
+- [ ] Documentatie bijgewerkt
+- [ ] Backup procedures getest
+- [ ] Monitoring opgezet

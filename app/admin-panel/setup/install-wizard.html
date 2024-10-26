@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Installatie - Setup Wizard</title>
+    <link href="wizard.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wizard-container">
+        <div class="wizard-header">
+            <img src="../logo.png" alt="VIP Installatie" class="wizard-logo">
+            <h1>Installatie Wizard</h1>
+        </div>
+
+        <div class="wizard-content">
+            <!-- Stap 1: Systeemvereisten -->
+            <div class="wizard-step" id="step1">
+                <h2>Stap 1: Systeemvereisten Check</h2>
+                <div class="requirements-list">
+                    <div class="requirement-item">
+                        <span class="requirement-label">Node.js versie:</span>
+                        <span id="nodeVersion" class="requirement-value"></span>
+                        <span id="nodeCheck" class="check-icon"></span>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="requirement-label">Beschikbare schijfruimte:</span>
+                        <span id="diskSpace" class="requirement-value"></span>
+                        <span id="diskCheck" class="check-icon"></span>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="requirement-label">Database vereisten:</span>
+                        <span id="dbCheck" class="check-icon"></span>
+                    </div>
+                    <div class="requirement-item">
+                        <span class="requirement-label">Permissies:</span>
+                        <span id="permissionsCheck" class="check-icon"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stap 2: Database Configuratie -->
+            <div class="wizard-step" id="step2">
+                <h2>Stap 2: Database Configuratie</h2>
+                <form id="dbConfigForm">
+                    <div class="form-group">
+                        <label>Database Type:</label>
+                        <select id="dbType" class="input-styled">
+                            <option value="sqlite">SQLite (Aanbevolen)</option>
+                            <option value="mysql">MySQL</option>
+                            <option value="postgres">PostgreSQL</option>
+                        </select>
+                    </div>
+                    <div id="dbConnectionFields" style="display: none;">
+                        <div class="form-group">
+                            <label>Host:</label>
+                            <input type="text" id="dbHost" class="input-styled">
+                        </div>
+                        <div class="form-group">
+                            <label>Poort:</label>
+                            <input type="number" id="dbPort" class="input-styled">
+                        </div>
+                        <div class="form-group">
+                            <label>Database Naam:</label>
+                            <input type="text" id="dbName" class="input-styled">
+                        </div>
+                        <div class="form-group">
+                            <label>Gebruikersnaam:</label>
+                            <input type="text" id="dbUser" class="input-styled">
+                        </div>
+                        <div class="form-group">
+                            <label>Wachtwoord:</label>
+                            <input type="password" id="dbPassword" class="input-styled">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Stap 3: VoIP Configuratie -->
+            <div class="wizard-step" id="step3">
+                <h2>Stap 3: VoIP Configuratie</h2>
+                <form id="voipConfigForm">
+                    <div class="form-group">
+                        <label>SIP Server:</label>
+                        <input type="text" id="sipServer" value="voip.cheapconnect.net" class="input-styled">
+                    </div>
+                    <div class="form-group">
+                        <label>Alternatieve Server:</label>
+                        <input type="text" id="altServer" value="sip.cheapconnect.net" class="input-styled">
+                    </div>
+                    <div class="form-group">
+                        <label>SIP Poort:</label>
+                        <select id="sipPort" class="input-styled">
+                            <option value="5080">5080 (Aanbevolen)</option>
+                            <option value="5060">5060</option>
+                            <option value="5070">5070</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Gebruikersnaam:</label>
+                        <input type="text" id="sipUsername" value="31453690196" class="input-styled">
+                    </div>
+                    <div class="form-group">
+                        <label>Nummerweergave:</label>
+                        <input type="text" id="callerId" value="+31453690196" class="input-styled">
+                    </div>
+                </form>
+            </div>
+
+            <!-- Stap 4: Super Admin Account -->
+            <div class="wizard-step" id="step4">
+                <h2>Stap 4: Super Admin Account</h2>
+                <form id="adminConfigForm">
+                    <div class="form-group">
+                        <label>Naam:</label>
+                        <input type="text" id="adminName" required class="input-styled">
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="adminEmail" required class="input-styled">
+                    </div>
+                    <div class="form-group">
+                        <label>Wachtwoord:</label>
+                        <input type="password" id="adminPassword" required class="input-styled">
+                    </div>
+                    <div class="form-group">
+                        <label>Bevestig Wachtwoord:</label>
+                        <input type="password" id="confirmPassword" required class="input-styled">
+                    </div>
+                </form>
+            </div>
+
+            <!-- Stap 5: Installatie -->
+            <div class="wizard-step" id="step5">
+                <h2>Stap 5: Installatie</h2>
+                <div class="installation-progress">
+                    <div class="progress-bar">
+                        <div id="progressBar" class="progress"></div>
+                    </div>
+                    <div id="installationStatus" class="status-text">Gereed voor installatie...</div>
+                    <div id="installationLog" class="installation-log"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wizard-footer">
+            <button id="prevBtn" class="btn-secondary" onclick="wizard.previousStep()">Vorige</button>
+            <button id="nextBtn" class="btn-primary" onclick="wizard.nextStep()">Volgende</button>
+        </div>
+    </div>
+
+    <script src="install-wizard.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+/* Voeg deze stijlen toe aan het bestaande CSS bestand */
+
+.dashboard-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    padding: 1.5rem;
+    background: #f8f8f8;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 0.5rem 0;
+}
+
+.stat-trend {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.stat-trend.positive {
+    color: #4CAF50;
+}
+
+.stat-trend.negative {
+    color: #f44336;
+}
+
+.chart-container {
+    height: 300px;
+    margin-top: 1rem;
+}
+
+.usage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.usage-chart {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.invoice-status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.status-list {
+    padding: 1rem;
+}
+
+.status-item {
+    margin-bottom: 1rem;
+}
+
+.status-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.status-value {
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.status-bar {
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.status-progress {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.status-progress.warning {
+    background: var(--warning-color);
+}
+
+.distribution-table {
+    margin-top: 1rem;
+    overflow-x: auto;
+}
+
+.distribution-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.distribution-table th,
+.distribution-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.usage-indicator {
+    width: 100px;
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.usage-bar {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+}
+
+.status-badge.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-badge.warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+@media (max-width: 768px) {
+    .stats-grid,
+    .usage-grid,
+    .invoice-status-grid {
+        grid-template-columns: 1fr;
+    }
+}

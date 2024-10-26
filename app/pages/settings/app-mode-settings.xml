@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page">
+    <ActionBar title="App Modus Instellingen">
+        <NavigationButton visibility="visible" tap="onBackTap" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <Label text="App Gedrag" class="h2 text-center m-b-20" />
+
+            <!-- Auto-start Instellingen -->
+            <GridLayout rows="auto" columns="*, auto" class="m-b-20">
+                <Label text="Automatisch starten" col="0" />
+                <Switch checked="{{ settings.autoStart }}" 
+                        tap="{{ toggleAutoStart }}"
+                        col="1" />
+            </GridLayout>
+            <Label text="Start de app automatisch op wanneer het apparaat wordt ingeschakeld" 
+                   class="text-muted" textWrap="true" />
+
+            <!-- Kiosk Mode Instellingen -->
+            <GridLayout rows="auto" columns="*, auto" class="m-t-20 m-b-20">
+                <Label text="Kiosk Modus" col="0" />
+                <Switch checked="{{ settings.kioskMode }}" 
+                        tap="{{ toggleKioskMode }}"
+                        col="1" />
+            </GridLayout>
+            <Label text="Vergrendelt de app in volledig scherm. Uitschakelen kan met een code." 
+                   class="text-muted" textWrap="true" />
+
+            <!-- Exit Code -->
+            <StackLayout visibility="{{ settings.kioskMode ? 'visible' : 'collapsed' }}"
+                        class="m-t-20">
+                <Label text="Exit Code" class="font-weight-bold" />
+                <TextField text="{{ settings.exitCode }}" 
+                          secure="true"
+                          keyboardType="number"
+                          maxLength="4"
+                          hint="Voer 4-cijferige code in"
+                          class="input" />
+                <Label text="Deze code is nodig om de kiosk modus te verlaten" 
+                       class="text-muted" textWrap="true" />
+            </StackLayout>
+
+            <!-- Waarschuwing -->
+            <Label text="Let op: Deze instellingen worden direct toegepast en kunnen alleen worden gewijzigd door een beheerder."
+                   class="text-warning m-t-20"
+                   textWrap="true" />
+        </StackLayout>
+    </ScrollView>
+</Page>
